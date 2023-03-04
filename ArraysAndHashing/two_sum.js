@@ -17,19 +17,28 @@
 // Input: nums = [3,3], target = 6
 // Output: [0,1]
 
-var two_sum = function (nums, target) {
-  var hashmap = {};
-  for (var i = 0; i < nums.length; i++) {
-    let rem = target - nums[i];
-    if (hashmap[rem] != undefined) {
-      return [hashmap[target - nums[i]], i];
-    }
-    hashmap[nums[i]] = i;
+// var two_sum = function (nums, target) {
+//   var hashmap = {};
+//   for (var i = 0; i < nums.length; i++) {
+//     let rem = target - nums[i];
+//     if (hashmap[rem] != undefined) {
+//       return [hashmap[target - nums[i]], i];
+//     }
+//     hashmap[nums[i]] = i;
+//   }
+//   return false;
+// };
+
+function two_sum(items, target) {
+  let map = {};
+  for (let i = 0; i < items.length; i++) {
+    if (map[target - items[i]]) return [i, map[target - items[i]]];
+    if (!map[items[i]]) map[items[i]] = i;
   }
-  return false;
-};
+  return [-1, -1];
+}
 
 var nums = [2, 7, 11, 15],
-  target = 9;
+  target = 22;
 var isDuplicate = two_sum(nums, target);
 console.log(isDuplicate);

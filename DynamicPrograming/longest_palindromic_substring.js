@@ -1,3 +1,5 @@
+// go throug h very letter and see if it forms a palindrome
+
 var longestPalindrome = function (s) {
   if (s.length < 2) return s;
   let max = "";
@@ -21,5 +23,5 @@ var checkPalindrome = function (l, r, s) {
   return curr;
 };
 
-let s = "babad";
+let s = "bababd";
 console.log(longestPalindrome(s));

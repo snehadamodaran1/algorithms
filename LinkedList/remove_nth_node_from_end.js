@@ -2,7 +2,8 @@ var removeNthFromEnd = function (head, n) {
   //initialization
   let slow = head,
     fast = head;
-  //try to locate fast pointer to the n+1 th node
+
+  // set fast to n nodes ahead of slow --- MAJOR TRICK
   for (let i = 1; i <= n; i++) {
     fast = fast.next;
   }
@@ -20,3 +21,21 @@ var removeNthFromEnd = function (head, n) {
 
   return head;
 };
+
+
+// FROM START
+
+// var removeNthFromEnd = function(head, n) {
+//   let node = head;
+//   prev = node;
+//   while(node!=null){
+//       if(node.val == n){
+//           let temp = node.next;
+//           prev.next = temp;
+//           break;
+//       }
+//       prev = node;
+//       node = node.next;
+//   }
+//   return head;
+// };

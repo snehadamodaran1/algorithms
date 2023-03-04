@@ -7,15 +7,28 @@ function Node(val, left, right) {
   this.right = right === undefined ? null : right;
 }
 
+// var invertTree = function (root) {
+//   if (!root) return null;
+
+//   var tmp = root.left;
+//   root.left = root.right;
+//   root.right = tmp;
+
+//   invertTree(root.left);
+//   invertTree(root.right);
+
+//   return root;
+// };
+
 var invertTree = function (root) {
   if (!root) return null;
 
-  var tmp = root.left;
-  root.left = root.right;
-  root.right = tmp;
+  if (root.left) invertTree(root.left);
+  if (root.right) invertTree(root.right);
 
-  invertTree(root.left);
-  invertTree(root.right);
+  let temp = root.left;
+  root.left = root.right;
+  root.right = temp;
 
   return root;
 };

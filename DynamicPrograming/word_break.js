@@ -50,16 +50,16 @@ var wordBreak = function (s, wordDict) {
   }
 };
 
-// function dfs(ind) {
-//   if (ind === length) {
-//     return true;
-//   }
-//   for (let i = ind + 1; i <= length; i++) {
-//     let word = s.substring(ind, i);
-//     if (wordDict.includes(word) && mem[ind]) {
-//       if (dfs(i)) {
-//         return true;
-//       }
-//     }
-//   }
-// }
+// Dynamic programming
+var wordBreak = function (s, wordDict) {
+  let dp = Array(s.length).fill(0);
+  for (let i = 0; i < s.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (wordDict.has(s.substring(j, i + 1))) {
+        dp[i] = dp[i] + dp[j];
+      }
+    }
+  }
+};
+wordDict = ["apple", "pie", "pier"];
+console.log(wordBreak("applepiepier", wordDict));

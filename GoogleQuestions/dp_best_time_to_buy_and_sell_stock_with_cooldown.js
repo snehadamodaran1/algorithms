@@ -58,3 +58,32 @@ var maxProfit = function (prices) {
 
 prices = [1, 2, 3, 0, 2];
 console.log(maxProfit(prices));
+
+
+var maxProfit = function (prices) {
+  let left = 0,
+    right = 1;
+  let profit = 0,
+    maxProfit = 0;
+  while (right < prices.length) {
+    if (prices[right] > prices[left]) {
+      profit = prices[right] - prices[left];
+      maxProfit = Math.max(profit, maxProfit);
+    } else {
+      left = right;
+    }
+    right += 1;
+  }
+  return maxProfit;
+};
+
+var maxProfit = function (prices) {
+  let lowestPrice = Infinity;
+
+  var maxProfit = 0;
+  for (i = 0; i < prices.length; i++) {
+    if (prices[i] < lowestPrice) lowestPrice = prices[i];
+    maxProfit = Math.max(maxProfit, prices[i] - lowestPrice);
+  }
+  return maxProfit;
+};

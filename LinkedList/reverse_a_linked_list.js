@@ -33,5 +33,5 @@ var list = [1, 2, 3, 4, 5];
 console.log(reverseList(list));
 
 pre = null;
-next = null;
-while (cur != null) {}
+// next = null;
+// while (cur != null) {}

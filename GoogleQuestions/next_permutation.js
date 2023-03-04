@@ -8,6 +8,7 @@
 var nextPermutation = function (nums) {
   for (let i = nums.length - 1; i >= 0; i--) {
     if (nums[i] < nums[i + 1]) {
+      console.log("num:", nums[i], nums[i + 1]);
       const large = nextLarge(i);
       swap(i, large);
       reverse(i + 1);
@@ -42,4 +43,44 @@ var nextPermutation = function (nums) {
   }
 };
 
-console.log(nextPermutation([7, 2, 3, 1, 5, 4, 3, 2, 0]));
+// var nums = a.map(function (x) {
+//   return parseInt(x, 10);
+// });
+// nums = [7, 2, 3, 1, 5, 4, 3, 2, 0];
+// console.log(nextPermutation(nums));
+
+function findNextPerm(nums) {
+  for (let i = nums.length - 1; i >= 0; i--) {
+    console.log("num:", nums[i], nums[i + 1]);
+    if (nums[i] < nums[i + 1]) {
+      const large = findNextlarge(i);
+      swap(large, i);
+      reverse(i + 1);
+      return nums;
+    }
+  }
+  nums.reverse();
+  function findNextlarge(small) {
+    for (let i = small - 1; i >= 0; i--) {
+      if (nums[i] > nums[small]) return i;
+    }
+  }
+  function swap(large, i) {
+    let temp = nums[large];
+    nums[large] = nums[i];
+    nums[i] = temp;
+  }
+  function reverse(idx) {
+    let start = idx,
+      end = nums.length - 1;
+
+    while (start < end) {
+      swap(start, end);
+      start++;
+      end--;
+    }
+  }
+}
+
+nums = [7, 2, 3, 1, 5, 4, 3, 2, 0];
+console.log(findNextPerm(nums));

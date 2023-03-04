@@ -1,0 +1,11 @@
+var findCircleNum = function (isConnected) {
+  let stack = [isConnected[0][0]];
+  let visited = new Set();
+  while (stack.length > 0) {}
+};
+isConnected = [
+  [1, 1, 0],
+  [1, 1, 0],
+  [0, 0, 1],
+];
+console.log(findCircleNum(isConnected));
